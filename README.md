@@ -1,5 +1,12 @@
-# Mobvoi Speech SDK
+# Mobvoi Chinese Speech SDK
 
-Mobvoi's speech SDK including hotword trigger, embedded and online speech recognition and TTS.  
+Mobvoi's end-to-end Chinese speech SDK includes the following components:
+* Low-power hotword trigger
+* Hybrid (embedded and online) speech recognition
+* Online natural language understanding
+* Online dialogue management
+* Hybrid (embedded and online) TTS
 
-Currently, it only supports two languages: Chinese and English.
+The speech SDK is available on Android, iOS and embedded linux platforms. It runs on armv7, arm64, mips and x86 CPUs.
+
+More details are referred to: http://ai.chumenwenwen.com
