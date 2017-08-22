@@ -15,6 +15,8 @@ SDK的初始化，使用mobvoi_sdk_init(）来完成：
  */
 int mobvoi_sdk_init(const char* appkey);
 ```
+**注意**：
+* 请参考如下链接，以获得一个有效的SDK授权键值：[http://ai.chumenwenwen.com/pages/document/get-started](http://ai.chumenwenwen.com/pages/document/get-started)
 
 # 语音识别
 ----------
@@ -428,8 +430,8 @@ void mobvoi_tts_set_params(const char* key, const char* value);
 ```
 其中，参数的取值范围如下（注意：参数及对应的取值，均为字符串，故使用时，都应置于""中）：
 
-| 参数      | 取值范围         |  
-|-----------|------------------|   
+| 参数      | 取值范围         | 
+|-----------|------------------| 
 | gender 	| male, female   　| 
 | language  | chinese, english |
 
@@ -515,3 +517,180 @@ void mobvoi_set_vlog_level(int level);
 * 声明 level 为 3 后，SDK除了会打印相应的级别的调试信息，而且还会将发送给 SDK 的语音数据保存在 *\<dir\>/audio_dump/record.pcm* 文件中。用户如感觉语音识别准确率不够高时，可以先检查对应的语音数据是否清晰。
   * 其中，\<dir\> 是用户调用 mobvoi_recognizer_set_params() 函数时，mobvoi_folder 参数的取值。
   * 如前文所述，record.pcm 文件中保存的语音格式，为16K采样率、16位位深、小端（Little-Endian）的PCM数据流。
+
+# 示例代码
+----------
+
+如下是一份示例代码，该代码演示了如何同时支持在线、离线及混合语音识别。该代码也演示了如何使用语音合成的功能。
+
+```cpp
+// Copyright 2016 Mobvoi Inc. All Rights Reserved.
+
+#include <assert.h>
+#include <fstream>
+#include <iostream>
+#include <pthread.h>
+#include <string>
+#include <unistd.h>
+#include <vector>
+
+#include "speech_sdk.h"
+
+pthread_mutex_t mutex;
+pthread_cond_t cond;
+
+// Please refer to the following URL to obtain a valid application key:
+//   http://ai.chumenwenwen.com/pages/document/get-started
+static const std::string kAppKey = "00000000000000000000000000000000";
+static const std::string kAsr = "ASR";
+static const std::string kSemantic = "SEMANTIC";
+static const std::string kOnebox = "ONEBOX";
+
+volatile bool in_the_session = true;
+volatile mobvoi_recognizer_type type = MOBVOI_RECOGNIZER_ONLINE_ONEBOX;
+
+void show_usage() {
+  std::cout << "Usage: recognizer_with_file ASR/SEMANTIC/ONEBOX audio_file_path"
+            << std::endl;
+}
+
+void on_remote_silence_detected() {
+  std::cout << "--------> dummy on_remote_silence_detected" << std::endl;
+}
+
+void on_partial_transcription(const char* result) {
+  std::cout << "--------> dummy on_partial_transcription: " << result
+            << std::endl;
+}
+
+void on_final_transcription(const char* result) {
+  std::cout << "--------> dummy on_final_transcription: " << result
+            << std::endl;
+  if (type == MOBVOI_RECOGNIZER_ONLINE_ASR) {
+    pthread_mutex_lock(&mutex);
+    in_the_session = false;
+    pthread_cond_signal(&cond);
+    pthread_mutex_unlock(&mutex);
+  }
+}
+
+void on_result(const char* result) {
+  std::cout << "--------> dummy on_result: " << result << std::endl;
+  pthread_mutex_lock(&mutex);
+  in_the_session = false;
+  pthread_cond_signal(&cond);
+  pthread_mutex_unlock(&mutex);
+}
+
+void on_error(int error_code) {
+  std::cout << "--------> dummy on_error with error code: " << error_code
+            << std::endl;
+  pthread_mutex_lock(&mutex);
+  in_the_session = false;
+  pthread_cond_signal(&cond);
+  pthread_mutex_unlock(&mutex);
+}
+
+void on_local_silence_detected() {
+  std::cout << "--------> dummy on_local_silence_detected" << std::endl;
+  mobvoi_recognizer_stop();
+}
+
+void on_volume(float spl) {
+  // The sound press level is here, do whatever you want
+  // std::cout << "--------> dummy on_speech_spl_generated: spl = "
+  //           << std::fixed << std::setprecision(6) << spl
+  //           << std::endl;
+}
+
+void* send_audio_thread(void* arg) {
+  std::ifstream& file = *(std::ifstream*) arg;
+  const int kBatchSize = 320;
+  int pos = 0;
+  file.seekg(0, file.end);
+  int length = file.tellg() / 2;
+  file.seekg(0, file.beg);
+  short in_shorts[kBatchSize];
+
+  usleep(200 * 1000);
+  if (file.is_open()) {
+    while (pos < length) {
+      int stride =
+          (pos + kBatchSize < length) ? kBatchSize : (length - pos);
+      file.read((char*) &in_shorts, stride * 2);
+      mobvoi_send_speech_frame((char*) &in_shorts, stride * 2);
+      pos += stride;
+    }
+  } else {
+    std::cout << "File could not be opened!" << std::endl;
+  }
+  file.close();
+}
+
+int main(int argc, const char* argv[]) {
+  if (argc != 3) {
+    show_usage();
+    return 1;
+  }
+
+  std::string online_type(argv[1]);
+  if (online_type == "ASR") {
+    type = MOBVOI_RECOGNIZER_ONLINE_ASR;
+  } else if (online_type == "SEMANTIC") {
+    type = MOBVOI_RECOGNIZER_ONLINE_SEMANTIC;
+  } else {
+    type = MOBVOI_RECOGNIZER_ONLINE_ONEBOX;
+  }
+
+  std::ifstream test_file;
+  test_file.open(argv[2]);
+  // Read the audio file specified by the command line argument
+  if (!test_file.is_open()) {
+    std::cout << "Failed to open file " << argv[1] << std::endl;
+    return 2;
+  }
+
+  // SDK initilalization, including callback functions
+  pthread_mutex_init(&mutex, NULL);
+  pthread_cond_init(&cond, NULL);
+
+  mobvoi_sdk_init(kAppKey.c_str());
+
+  mobvoi_recognizer_handler_vtable* speech_handlers =
+      new mobvoi_recognizer_handler_vtable;
+  assert(speech_handlers != NULL);
+  memset(speech_handlers, 0, sizeof(mobvoi_recognizer_handler_vtable));
+  speech_handlers->on_error = &on_error;
+  speech_handlers->on_partial_transcription = &on_partial_transcription;
+  speech_handlers->on_final_transcription = &on_final_transcription;
+  speech_handlers->on_local_silence_detected = &on_local_silence_detected;
+  speech_handlers->on_remote_silence_detected = &on_remote_silence_detected;
+  speech_handlers->on_result = &on_result;
+  speech_handlers->on_volume = &on_volume;
+  mobvoi_recognizer_set_handler(speech_handlers);
+
+  mobvoi_recognizer_start(type);
+
+  // Send the audio data in a separated thread
+  pthread_t tid;
+  pthread_create(&tid, NULL, send_audio_thread, &test_file);
+  pthread_mutex_lock(&mutex);
+  in_the_session = true;
+  while (in_the_session) {
+    pthread_cond_wait(&cond, &mutex);
+  }
+  pthread_mutex_unlock(&mutex);
+
+  // SDK clean up
+  std::cout << "start sdk cleanup" << std::endl;
+  mobvoi_sdk_cleanup();
+  std::cout << "end sdk cleanup" << std::endl;
+  delete speech_handlers;
+  std::cout << "end dummy sender" << std::endl;
+  pthread_mutex_destroy(&mutex);
+  pthread_cond_destroy(&cond);
+  pthread_join(tid, NULL);
+
+  return 0;
+}
+```
