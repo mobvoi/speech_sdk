@@ -35,6 +35,6 @@ $ tar xvfz ~/speechsdk-linux-1.1.0.tar.gz
 | build           | 样例代码解译产生的可执行文件　                  |
 
 **注意：**
-* 解压SDK后所得到的.mobvoi隐藏目录，是SDK运行时所需要的。因此，在发布基于本SDK的语音应用时，应将.mobvoi目录一同部署
-* 在编写基于本SDK的语音应用时，请使用mobvoi_recognizer_set_params()函数来指定.mobvoi所在的位置。注意该目录应当具有可写权限。如下是一个调用该函数的例子：
+* 解压SDK后所得到的.mobvoi隐藏目录，是SDK运行时所需要的。因此，在发布基于本SDK的语音应用时，应将.mobvoi目录一同部署。
+* 在编写基于本SDK的语音应用时，请使用mobvoi_recognizer_set_params()函数来指定.mobvoi所在的位置。注意该目录应当具有可写权限。比如若用户选择将.mobvoi目录部署在/var下，则需要在sdk初始化后调用如下函数进行设置：
   *  mobvoi_recognizer_set_params("mobvoi_folder", "/var/.mobvoi/")
