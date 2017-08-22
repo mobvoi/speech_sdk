@@ -1,5 +1,4 @@
 # 下载SDK软件包
----------------
 
 请于官网下载语音SDK，链接为：[SDK下载](http://ai.chumenwenwen.com/pages/document/intro?)。
 
@@ -13,7 +12,6 @@ SDK文件名格式为：*speechsdk-{arch}-{version}.tar.gz*。现在所支持的
 
 
 # 解压SDK软件包
----------------
 
 可参考如下命令将SDK软件包解压到指定目录。此处假设所下载的软件包为：speechsdk-linux-1.1.0.tar.gz（存放于HOME目录下），用户欲将之解压到HOME目录下的dev子目录：
 
