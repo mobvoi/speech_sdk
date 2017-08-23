@@ -1,5 +1,4 @@
 # SDK初始化
------------
 
 在使用SDK之初，应进行SDK的初始化。
 
@@ -19,7 +18,6 @@ int mobvoi_sdk_init(const char* appkey);
 * 请参考如下链接，以获得一个有效的SDK授权键值：[http://ai.chumenwenwen.com/pages/document/get-started](http://ai.chumenwenwen.com/pages/document/get-started)
 
 # 语音识别
-----------
 
 ## 相关设置
 
@@ -211,7 +209,6 @@ int mobvoi_recognizer_cancel();
 ```
 
 # 离线识别
-----------
 
 开启离线识别类型的识别任务之前，应使用mobvoi_recognizer_init_offline()进行相关的设置。
 
@@ -230,7 +227,6 @@ int mobvoi_recognizer_init_offline();
 * 离线识别作为语音识别的一种，具体用法，应遵从**语音识别**一节中的相关介绍。
 
 # 热词唤醒
-----------
 
 一般情况下，用户并不希望语音识别功能一直处于开启状态，而是希望以特定的词汇开启这一功能。这在SDK中，被称作“热词唤醒”。
 
@@ -298,7 +294,6 @@ int mobvoi_hotword_stop();
 void mobvoi_hotword_remove_handler(mobvoi_hotword_handler_vtable* handlers);
 ```
 # 多关键词识别
---------------
 
 多关键词识别，功能类似于热词唤醒，可以不开启在线语音识别的情况下，同时对多个关键词进行监听。此外，还可以支持联系人、应用、音乐及视频相关的语义理解。
 
@@ -395,7 +390,6 @@ void mobvoi_recognizer_build_keywords(const char* model_name);
 ```
 
 # 语音合成
-----------
 
 语音识别用于为用户给定的文本生成对应的语音。
 
@@ -481,7 +475,6 @@ int mobvoi_tts_cancel_synthesis();
 ```
 
 # SDK结束清理
--------------
 
 在使用SDK结束之后，使用mobvoi_sdk_cleanup()相应相应资源的回收清理。
 
@@ -495,7 +488,6 @@ void mobvoi_sdk_cleanup();
 ```
 
 # SDK调试
----------
 
 SDK运行时，可以产生一些调试信息。用户可以使用mobvoi_set_vlog_level()设置SDK调试/日志信息的丰富程度。
 
@@ -519,7 +511,6 @@ void mobvoi_set_vlog_level(int level);
   * 如前文所述，record.pcm 文件中保存的语音格式，为16K采样率、16位位深、小端（Little-Endian）的PCM数据流。
 
 # 示例代码
-----------
 
 如下是一份示例代码，该代码演示了如何使用本SDK识别存储于音频文件中的语音信息。
 
