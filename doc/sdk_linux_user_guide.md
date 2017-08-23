@@ -521,7 +521,11 @@ void mobvoi_set_vlog_level(int level);
 # 示例代码
 ----------
 
-如下是一份示例代码，该代码演示了如何同时支持在线、离线及混合语音识别。该代码也演示了如何使用语音合成的功能。
+如下是一份示例代码，该代码演示了如何使用本SDK识别存储于音频文件中的语音信息。
+
+该代码所用的音频文件，存储的是采用16K采样、16位位深、小端（Little-Endian）的单声道PCM数据流。
+
+关于命令行参数 ASR/SEMANTIC/ONEBOX 的含义，请参照上文中 mobvoi_recognizer_type 的定义。
 
 ```cpp
 // Copyright 2016 Mobvoi Inc. All Rights Reserved.
