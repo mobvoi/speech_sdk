@@ -1,6 +1,6 @@
 # 1. SDK支持什么平台架构？
-Android版SDK支持x86，mips，armv7，armv8平台。
-Linux版SDK目前支持x86，armv7平台。
+Android版SDK支持x86，mips，armv7，armv8平台。 
+Linux版SDK目前支持x86，armv7，armv8平台。
 # 2. ASR识别支持的采样率和音频格式有哪些？
 Android和Linux SDK音频均支持16k采样，16bit位深，pcm格式。
 
