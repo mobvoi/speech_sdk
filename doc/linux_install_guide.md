@@ -5,6 +5,7 @@
 SDK文件名格式为：*speechsdk-{version}.tar.gz*。现在所支持的平台有：
 * x86_64
 * ARMv7
+* ARMv8
 
 
 # 解压SDK软件包
