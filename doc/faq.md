@@ -7,7 +7,7 @@
 
 
 [***功能相关***](#%E5%8A%9F%E8%83%BD%E7%9B%B8%E5%85%B3)
-* [离线识别可以识别所有短句吗？](#%E7%A6%BB%E7%BA%BF%E8%AF%86%E5%88%AB%E5%8F%AF%E4%BB%A5%E8%AF%86%E5%88%AB%E6%89%80%E6%9C%89%E7%9F%AD%E5%8F%A5%E5%90%97)
+* [离线识别可以识别所有语音吗？](#%E7%A6%BB%E7%BA%BF%E8%AF%86%E5%88%AB%E5%8F%AF%E4%BB%A5%E8%AF%86%E5%88%AB%E6%89%80%E6%9C%89%E8%AF%AD%E9%9F%B3%E5%90%97)
 * [关键词识别和热词唤醒一样吗？](#%E5%85%B3%E9%94%AE%E8%AF%8D%E8%AF%86%E5%88%AB%E5%92%8C%E7%83%AD%E8%AF%8D%E5%94%A4%E9%86%92%E4%B8%80%E6%A0%B7%E5%90%97)
 * [唤醒热词如何更改？](#%E5%94%A4%E9%86%92%E7%83%AD%E8%AF%8D%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9)
 * [支持中英文混合识别吗？](#%E6%94%AF%E6%8C%81%E4%B8%AD%E8%8B%B1%E6%96%87%E6%B7%B7%E5%90%88%E8%AF%86%E5%88%AB%E5%90%97)
@@ -82,7 +82,9 @@
 > 目前在线识别是12秒超时，但使用Voice Input方式的话可以延长至30秒。
 
 #### 语音识别返回JSON字符串，能直接返回对应语音的文本吗？
-> 如果语音识别返回JSON
+> 如果语音识别返回JSON字符串，意味着你可能在调用onebox类型的recognizer。如果直接调用asr类型的recognizer，将不会有JSON结果返回，具体可以参考官网文档:  
+> [Andriod版](http://ai.chumenwenwen.com/pages/document/android/example) [Linux版](http://ai.chumenwenwen.com/pages/document/linux/example)
+
 
 #### 返回场景中的action是什么意思，如何定义？
 > action就是前端执行的唯一标示。比如问天气就是com.mobvoi.semantic.action.WEATHER，查股票就是com.mobvoi.semantic.action.STOCK。前端请按照这个字段来规划执行逻辑。
