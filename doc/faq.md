@@ -29,10 +29,10 @@
 
 #### SDK支持什么平台架构？
 
-> Android版SDK支持x86，mips，armv7，armv8平台。 Linux版SDK目前支持x86，armv7，armv8平台。
+> Android版SDK支持x86_64，mips，armv7，armv8平台。 Linux版SDK目前支持x86_64，armv7，armv8平台。
 
 #### SDK对输入音频格式有要求吗？
-> Android和Linux SDK音频均支持16k采样，16bit位深，pcm格式。
+> Android和Linux SDK音频均支持16k采样，16bit位深，小端(Little-Endian)，pcm格式。
 
 #### 有没有类似hello,world的demo？
 > 请参考官网开发者文档：[Android版开发示例](http://ai.chumenwenwen.com/pages/document/android/example)，[Linux版开发示例](http://ai.chumenwenwen.com/pages/document/linux/example)
@@ -45,7 +45,7 @@
 
 #### 离线识别可以识别所有语音吗？
 > 不可以。如果要识别*所有*语音，需要一个Large Vocabulary，从性能，资源和通用性考虑，离线识别版SDK目前不会做到识别所有语音。
-更佳的方案是，用户可以选择调用在线语音识别。
+更佳的方案是，综合在线和离线的优势， 采用混合语音识别。
 
 #### 唤醒热词如何更改？
 > 目前有两种方式提供唤醒热词，一种是深度定制，一种是动态生成（仅限Android SDK全量版）。深度定制版从功耗，性能，敏感度和误触率上均优于动态生成版，但需要商务联系出门问问进行定制。
@@ -59,7 +59,7 @@
 > 支持
 
 #### Linux:如何屏蔽SDK本身日志输出？
-> Linux版SDK暂不支持。
+> Linux版SDK暂不支持。如确实需要，可使用grep或其他命令屏蔽大部分输出。
 
 #### 离线设置联系人数量有限制吗？
 > 受限于机器内存大小限制。但如果设置数量过多，可能会影响性能。
@@ -77,12 +77,12 @@
 > 目前在线识别是12秒超时，但使用Voice Input方式的话可以延长至30秒。
 
 #### 语音识别返回JSON字符串，能直接返回对应语音的文本吗？
-> 如果语音识别返回JSON字符串，意味着你可能在调用onebox类型的recognizer。如果直接调用asr类型的recognizer，将不会有JSON结果返回，具体可以参考官网文档:  
+> JSON字符串中的"query"字段对应值即为识别的语音文本，如果想直接返回语音文本，可调用asr类型的recognizer，具体请参考官网文档:  
 > [Andriod版](http://ai.chumenwenwen.com/pages/document/android/example) [Linux版](http://ai.chumenwenwen.com/pages/document/linux/example)
 
 
 #### 返回场景中的action是什么意思，如何定义？
-> action就是前端执行的唯一标示。比如问天气就是com.mobvoi.semantic.action.WEATHER，查股票就是com.mobvoi.semantic.action.STOCK。前端请按照这个字段来规划执行逻辑。
+> action就是前端执行的唯一标识。比如问天气就是com.mobvoi.semantic.action.WEATHER，查股票就是com.mobvoi.semantic.action.STOCK。前端请按照这个字段来规划执行逻辑。
 
 ### 技术疑难
 
