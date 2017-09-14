@@ -35,10 +35,10 @@
 > Android和Linux SDK音频均支持16k采样，16bit位深，小端(Little-Endian)，pcm格式。
 
 #### 有没有类似hello,world的demo？
-> 请参考官网开发者文档：[Android版开发示例](http://ai.chumenwenwen.com/pages/document/android/example)，[Linux版开发示例](http://ai.chumenwenwen.com/pages/document/linux/example)
+> 请参考官网开发者文档：[Android版开发示例](http://ai.chumenwenwen.com/pages/document/android/example)，[Linux版开发示例](http://ai.chumenwenwen.com/pages/document/linux/example)。
 
 #### 有没有开发者论坛啊？
-> 有的。请点击[出门问问开发者论坛](https://bbs.ticwear.com/forum.php?mod=forumdisplay&fid=262)
+> 有的。请点击[出门问问开发者论坛](https://bbs.ticwear.com/forum.php?mod=forumdisplay&fid=262)。
 
 
 ### 功能相关
@@ -53,10 +53,10 @@
 
 #### 关键词识别和热词唤醒一样吗？
 > 首先问题中的关键词识别，我们也可以理解为快词，在Android和Linux版的SDK中是针对离线recognizer的设置，在recognizer不关闭的情况下，快词可以一直被识别，而热词是用于更广义的唤醒。
-另外二者在性能上是有差距的，请参考[唤醒热词如何更改？](#%E5%94%A4%E9%86%92%E7%83%AD%E8%AF%8D%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9)
+另外二者在性能上是有差距的，请参考[唤醒热词如何更改？](#%E5%94%A4%E9%86%92%E7%83%AD%E8%AF%8D%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9)。
 
 #### 支持中英文混合识别吗？
-> 支持
+> 支持。
 
 #### Linux:如何屏蔽SDK本身日志输出？
 > Linux版SDK暂不支持。如确实需要，可使用grep或其他命令屏蔽大部分输出。
@@ -65,7 +65,7 @@
 > 受限于机器内存大小限制。但如果设置数量过多，可能会影响性能。
 
 #### TTS的长度有限制吗？
-> 中文单次输入最长500字
+> 中文单次输入最长500字。
 
 #### TTS能切换人声吗？
 > 暂不支持切换人声。
@@ -78,7 +78,7 @@
 
 #### 语音识别返回JSON字符串，能直接返回对应语音的文本吗？
 > JSON字符串中的"query"字段对应值即为识别的语音文本，如果想直接返回语音文本，可调用asr类型的recognizer，具体请参考官网文档:  
-> [Andriod版](http://ai.chumenwenwen.com/pages/document/android/example) [Linux版](http://ai.chumenwenwen.com/pages/document/linux/example)
+> [Andriod版](http://ai.chumenwenwen.com/pages/document/android/example) [Linux版](http://ai.chumenwenwen.com/pages/document/linux/example)。
 
 
 #### 返回场景中的action是什么意思，如何定义？
