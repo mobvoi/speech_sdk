@@ -107,5 +107,5 @@
 >想看到更多的问题，请点击[出门问问开发者论坛](https://bbs.ticwear.com/forum.php?mod=forumdisplay&fid=262)。
 
 #### 问问开发者邮箱
->请将问题发至[ai-developer@mobvoi.com](ai-developer@mobvoi.com)
+>请将问题发至[ai-developer@mobvoi.com](mailto://ai-developer@mobvoi.com)
 
