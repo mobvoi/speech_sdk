@@ -5,22 +5,24 @@ SDK for the development of *Automatic Speech Recognition (ASR)* and *Text-to-Spe
 
 ## Features
 - [x] Hotword Wakeup
-- [x] Online Automatic Speech Recognition (ASR), which includes
-    * Speech Recognition
-    * Speech Understanding
+- [x] Online speech interaction, which includes
+    * ASR
+    * Natural Language Understanding
+    * Dialogue Management
     * Vertical Search
-- [x] Offline Automatic Speech Recognition (ASR)
-- [x] Online/Offline mixed Automatic Speech Recognition (ASR)
+    * TTS
+- [x] Offline ASR
+- [x] Online/Offline mixed ASR
 - [x] Multi-Keywords Activation
-- [x] Online Text-to-Speech (TTS)
-- [x] Offline Text-to-Speech (TTS)
-- [x] Online/Offline mixed Text-to-Speech (TTS)
+- [x] Online TTS
+- [x] Offline TTS
+- [x] Online/Offline mixed TTS
 
 ## Language support
 
-- [x] Chinese Mandarin
+- [x] Mandarin Chinese
 - [x] American English (Coming soon)
-- [x] Chinese Cantonese (Coming soon)
+- [x] Cantonese (Coming soon)
 
 ## Supported platforms
 
@@ -37,11 +39,11 @@ The SDK is validated on the following platforms:
 * Commercial license
 -->
 
-## File hierarchy
+## Directory hierarchy
 
 | File/Directoy  | Purpose                                                           |
 |:---------------|:------------------------------------------------------------------|
-| doc            | Contains some documentation                                       |
+| doc            | Contains SDK documentation                                        |
 | include        | Contains the SDK header file (speech_sdk.h)                       |
 | lib            | Contains the library (libmobvoisdk.so) for different platforms    |
 | .mobvoi        | Contains the configurations for the SDK. It is a hidden directory |
@@ -76,7 +78,7 @@ LD_LIBRARY_PATH=../../lib/x86_64 ./x86_64_asr online
 </pre>
 
 Note:
-* The wakeup word is "Ni Hao Wen Wen"
+* The wakeup word is "Ni Hao Wen Wen" (你好问问)
 
 ## Trouble shooting
 
