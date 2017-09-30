@@ -41,6 +41,7 @@ The SDK is validated on the following platforms:
 
 | File/Directoy  | Purpose                                                           |
 |:---------------|:------------------------------------------------------------------|
+| doc            | Contains some documentation                                       |
 | include        | Contains the SDK header file (speech_sdk.h)                       |
 | lib            | Contains the library (libmobvoisdk.so) for different platforms    |
 | .mobvoi        | Contains the configurations for the SDK. It is a hidden directory |
