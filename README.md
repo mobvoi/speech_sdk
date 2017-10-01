@@ -1,7 +1,7 @@
-# Mobvoi SDK for Speech Recognition and Text-to-Speech
+# Mobvoi SDK for Speech Recognition and Text-to-Speech Synthesis
 
 <!-- ## Introduction -->
-SDK for the development of *Automatic Speech Recognition (ASR)* and *Text-to-Speech (TTS)* applications
+SDK for the development of *Automatic Speech Recognition (ASR)* and *Text-to-Speech Synthesis (TTS)* applications
 
 ## Features
 - [x] Hotword Wakeup
