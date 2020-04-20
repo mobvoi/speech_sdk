@@ -1,6 +1,7 @@
 ## 简介
 出门问问目前提供了ASR、TTS、NLP、Search的HTTPS协议的接口。   
 外网域名：` https://open.mobvoi.com `   
+
 # 调用方式
 ## ASR接口
 **URL:** api/asr/v1
@@ -21,7 +22,8 @@
 | timestamp | Long | 是 | 当前时间戳，单位为秒 |
 | user_id | String | 否 | 用户的唯一id,有则填写 |   
 
-**文件对应Content-Type说明：** <br>  
+**文件对应Content-Type说明：** 
+
 | <div style="width:70pt">文件类型 | <div style="width:70pt">Rate |<div style="width: 300pt"> Content-Type 或者type|
 | :-----:| :----: |  :---------:   |
 | wav | 8000 | audio/x-wav;rate=8000 |
@@ -33,10 +35,12 @@
 
 **调用Demo及响应:**   
 
-{   
-&nbsp;&nbsp;&nbsp;&nbsp;"content": "我是出门问问",   
-&nbsp;&nbsp; &nbsp;"status": "200"  
-}  
+```
+ {
+  "content": "我是出门问问",
+  "status": "200"
+}
+```
 
 **响应说明：**   
 
@@ -53,6 +57,7 @@
 **HTTP Method:** 支持GET/POST请求
 
 #### 调用参数及说明:   
+
 | <div style="width: 56pt">字段名 | <div style="width: 50pt">类型 | <div style="width: 30pt">必填 | <div style="width: 40pt">默认值| <div style="width:  60pt">参考值 | 描述 |
 | :----: | :----: | :----: | :----: | :----: | :--: |
 | text | String | 是 |  |  | 要合成的文本内容，限制为500字节。支持ssml标记语言，使用说明见附录3。|
@@ -69,8 +74,10 @@
 | ignore_limit | Boolean | 否 | false | false/true  | 是否限制字数,如果设置true可以突破500字节限制 | 
 
 **返回值说明：**   
+
 如果成功转换，则没有返回值，直接返回语音流。   
 如果转换失败，则返回json提示。  
+
 ```
 {
   "status": "error",
@@ -85,6 +92,7 @@
 **HTTP Method:** GET   
 
 **调用参数及说明：**    
+
 | <div style="width: 70pt">名称 | <div style="width: 45pt">类型 | <div style="width: 55pt">是否必传 | 说明|
 | :----: | :----: | :----: | :----|
 | query | String | 是 | 查询语句 |
@@ -94,6 +102,7 @@
 | context | String | 否 | 强制指定domain |
 
 **返回字段说明：**   
+
 |<div style="width: 60pt">名称|<div style="width: 60pt">类型   |说明  |
 | :----: | :----: | :----: |
 | traits | JsonObject | 特征意图 | 
@@ -103,7 +112,9 @@
 | params | JsonObejct | 参数列表，time、location、ranking_condition、price、type等 |
 | status | String | 状态：success, error | 
 | errorMessage | JsonObejct | code: 错误码，desc: 错误描述 | 
-**返回示例：**<br>
+
+**返回示例：**
+
 
 ```
 {
@@ -139,7 +150,8 @@
 **URL:** api/search/v1<br>
 **HTTP Method:** GET<br>
 
-**调用参数及说明：**<br>
+**调用参数及说明：**
+
 | <div style="width: 55pt">名称 | <div style="width: 45pt">类型 | <div style="width: 55pt">是否必传 | 说明|
 | :----: | :----: | :----: | :----:|
 | query | String | 是 | 查询语句 |
@@ -153,7 +165,6 @@
 | timestamp | long | 是 | 当前时间戳，单位为秒 |
 | ignore_context | Bool | 否 | 是否忽略多轮会话，默认为false |
 | user_id | String | 否 | 用户ID，可根据需求由开发者生成 |
-
 
 **返回字段说明：**  
 
@@ -173,7 +184,8 @@
 
 lite协议详细输出结果说明请参考：https://ai.chumenwenwen.com/pages/document/search-output-intro
 
-**返回示例：**   
+**返回示例：** 
+
 ```
 {
     "clientAction":{
@@ -315,14 +327,17 @@ iopcmd=thumbnail&type=6&width=120&height=200",
     }
 }
 ```
+
 # 示例与说明   
 ## 单轮对话开发示例   
-以onebox接口为例：<br>
+以onebox接口为例：
+
  
 1.  脚本接收一个输入文件地址（可以是相对路径，也可以是绝对路径），文件内容是一些样例query，每一句query占一行；
 2.	脚本结果输出到当前执行目录的result文件里，也可以在执行脚本时手动执行 -o 参数，把结果输出到指定文件；
 3.  执行脚本前，请先自行修改appkey值和secret值；
 4.	该脚本只在mac系统下测试过，使用python 2.7版本。
+
 ```
 # coding=utf-8
 import argparse
@@ -502,11 +517,9 @@ domain="public.weather">
          <td ><break time="300ms"/></td>
     </tr>
     <tr> 
-         <td rowspan="1">say-as</td> 
+         <td rowspan="1">w</td> 
          <td >指定分词不拆分并可指定词发音</td>  
-         <td ><w>成都</w>是<br>
-<w phoneme=”cheng2 du1”>成都</w>是<br>
-我的指甲<w phoneme=”zhang3 chang2”>长长</w>了</td>
+         <td ><w>我的指甲<w phoneme=”zhang3 chang2”>长长</w>了</td>
     </tr> 
 </table>
 
@@ -539,6 +552,7 @@ domain="public.weather">
 | 31000 | 参数错误，缺少必填参数或者参数取值范围错误，具体可参考errorMessage中描述|
 | 31002 | 服务器内部错误 |
 | 31006 | 服务器并发量超出限制 |
+
 ## 常见问题
  1、Q：调用时发现某个通用场景NLU分类错误。  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：请先检查是否在AI开放平台勾选了该通用场景并成功上线。
