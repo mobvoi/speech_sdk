@@ -19,34 +19,33 @@
 | appkey | String | 是 | 开发者在AI开放平台上申请的appkey |
 | signature | String | 是 | 授权码，通过“appkey+secret+timestamp”进行md5加密，再用16进制进行编码。（加号参与字符串拼接） |
 | timestamp | Long | 是 | 当前时间戳，单位为秒 |
-| user_id | String | 否 | 用户的唯一id,有则填写 |
+| user_id | String | 否 | 用户的唯一id,有则填写 |   
 
-**文件对应Content-Type说明：**   
-| <div style="width: 70pt">文件类型 | <div style="width: 70pt"> Rate |     <div style="width: 300pt">Content-Type 或者type     |
+**文件对应Content-Type说明：** <br>  
+| <div style="width:70pt">文件类型 | <div style="width:70pt">Rate |<div style="width: 300pt"> Content-Type 或者type|
 | :-----:| :----: |  :---------:   |
 | wav | 8000 | audio/x-wav;rate=8000 |
 | wav | 16000 | audio/x-wav;rate=16000 |
 | mp3 | 8000 | audio/x-mp3;rate=8000 |
 | mp3 | 16000 | audio/x-mp3;rate=16000 |
 | pcm | 8000 | audio/x-wav;codec=pcm;rate=8000 |
-| pcm | 16000 | audio/x-wav;codec=pcm;rate=16000 |
+| pcm | 16000 | audio/x-wav;codec=pcm;rate=16000 |  
 
 **调用Demo及响应:**   
 
 {   
 &nbsp;&nbsp;&nbsp;&nbsp;"content": "我是出门问问",   
 &nbsp;&nbsp; &nbsp;"status": "200"  
-}
+}  
 
 **响应说明：**   
 
-<div style="width: 150pt">名称 | <div style="width: 300pt">说明
-:---: | :---:
-content | 解析出文字内容
-message | 失败时的解释说明
-status | 状态：success, error
-errorMessage | code: 错误码，desc: 错误描述
-
+| <div style="width: 150pt">名称 | <div style="width: 300pt">说明|
+| :---: | :---: |
+| content | 解析出文字内容 |
+| message | 失败时的解释说明 |
+| status | 状态：success, error |
+| errorMessage | code: 错误码，desc: 错误描述 |
 
 ## TTS接口
 **URL:** api/tts/v1
@@ -67,7 +66,8 @@ errorMessage | code: 错误码，desc: 错误描述
 | convert | String | 否 |  |  robot | 是否转化为机器声 |
 | rate | Enum | 否 | 16000 | 16000/8000  | 音频采样率 |
 | volume | Float | 否 | 0.5 | 0-1.0  | 合成音量 |
-| ignore_limit | Boolean | 否 | false | false/true  | 是否限制字数,如果设置true可以突破500字节限制 |
+| ignore_limit | Boolean | 否 | false | false/true  | 是否限制字数,如果设置true可以突破500字节限制 | 
+
 **返回值说明：**   
 如果成功转换，则没有返回值，直接返回语音流。   
 如果转换失败，则返回json提示。  
@@ -94,7 +94,7 @@ errorMessage | code: 错误码，desc: 错误描述
 | context | String | 否 | 强制指定domain |
 
 **返回字段说明：**   
-|<div style="width: 60pt">名称     |<div style="width: 60pt">类型   |说明  |
+|<div style="width: 60pt">名称|<div style="width: 60pt">类型   |说明  |
 | :----: | :----: | :----: |
 | traits | JsonObject | 特征意图 | 
 | task | String | 技能分类，public.weather、public.restaurant、public.music等 |
@@ -502,7 +502,7 @@ domain="public.weather">
          <td ><break time="300ms"/></td>
     </tr>
     <tr> 
-         <td >w</td>  
+         <td rowspan="1">say-as</td> 
          <td >指定分词不拆分并可指定词发音</td>  
          <td ><w>成都</w>是<br>
 <w phoneme=”cheng2 du1”>成都</w>是<br>
