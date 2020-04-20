@@ -1,6 +1,6 @@
 ## 简介
 出门问问目前提供了ASR、TTS、NLP、Search的HTTPS协议的接口。   
-外网域名：https://open.mobvoi.com   
+外网域名：` https://open.mobvoi.com `   
 # 调用方式
 ## ASR接口
 **URL:** api/asr/v1
@@ -21,8 +21,8 @@
 | timestamp | Long | 是 | 当前时间戳，单位为秒 |
 | user_id | String | 否 | 用户的唯一id,有则填写 |
 
-**文件对应Content-Type说明：**
-| <div style="width: 70pt">文件类型 |<div style="width: 70pt"> Rate |     <div style="width: 300pt">Content-Type 或者type     |
+**文件对应Content-Type说明：**   
+| <div style="width: 70pt">文件类型 | <div style="width: 70pt"> Rate |     <div style="width: 300pt">Content-Type 或者type     |
 | :-----:| :----: |  :---------:   |
 | wav | 8000 | audio/x-wav;rate=8000 |
 | wav | 16000 | audio/x-wav;rate=16000 |
@@ -31,16 +31,14 @@
 | pcm | 8000 | audio/x-wav;codec=pcm;rate=8000 |
 | pcm | 16000 | audio/x-wav;codec=pcm;rate=16000 |
 
-**调用Demo及响应:**
-
-
+**调用Demo及响应:**   
 
 {   
 &nbsp;&nbsp;&nbsp;&nbsp;"content": "我是出门问问",   
 &nbsp;&nbsp; &nbsp;"status": "200"  
 }
 
-**响应说明：**
+**响应说明：**   
 
 <div style="width: 150pt">名称 | <div style="width: 300pt">说明
 :---: | :---:
@@ -55,7 +53,7 @@ errorMessage | code: 错误码，desc: 错误描述
 
 **HTTP Method:** 支持GET/POST请求
 
-#### 调用参数及说明:
+#### 调用参数及说明:   
 | <div style="width: 56pt">字段名 | <div style="width: 50pt">类型 | <div style="width: 30pt">必填 | <div style="width: 40pt">默认值| <div style="width:  60pt">参考值 | 描述 |
 | :----: | :----: | :----: | :----: | :----: | :--: |
 | text | String | 是 |  |  | 要合成的文本内容，限制为500字节。支持ssml标记语言，使用说明见附录3。|
@@ -70,7 +68,7 @@ errorMessage | code: 错误码，desc: 错误描述
 | rate | Enum | 否 | 16000 | 16000/8000  | 音频采样率 |
 | volume | Float | 否 | 0.5 | 0-1.0  | 合成音量 |
 | ignore_limit | Boolean | 否 | false | false/true  | 是否限制字数,如果设置true可以突破500字节限制 |
-**返回值说明：**
+**返回值说明：**   
 如果成功转换，则没有返回值，直接返回语音流。   
 如果转换失败，则返回json提示。  
 ```
@@ -82,11 +80,11 @@ errorMessage | code: 错误码，desc: 错误描述
   }
 ```
 
-## NLP接口
+## NLP接口   
 **URL:** api/nlp/v1   
 **HTTP Method:** GET   
 
-**调用参数及说明：**
+**调用参数及说明：**    
 | <div style="width: 70pt">名称 | <div style="width: 45pt">类型 | <div style="width: 55pt">是否必传 | 说明|
 | :----: | :----: | :----: | :----|
 | query | String | 是 | 查询语句 |
@@ -95,7 +93,7 @@ errorMessage | code: 错误码，desc: 错误描述
 | timestamp | Long | 是 | 当前时间戳，单位为秒 |
 | context | String | 否 | 强制指定domain |
 
-**返回字段说明：**
+**返回字段说明：**   
 |<div style="width: 60pt">名称     |<div style="width: 60pt">类型   |说明  |
 | :----: | :----: | :----: |
 | traits | JsonObject | 特征意图 | 
@@ -137,7 +135,7 @@ errorMessage | code: 错误码，desc: 错误描述
 	}
 }
 ```
-## Search接口
+## Search接口   
 **URL:** api/search/v1<br>
 **HTTP Method:** GET<br>
 
@@ -157,7 +155,7 @@ errorMessage | code: 错误码，desc: 错误描述
 | user_id | String | 否 | 用户ID，可根据需求由开发者生成 |
 
 
-**返回字段说明：**
+**返回字段说明：**  
 
 |<div style="width: 70pt">名称     |<div style="width: 70pt">类型   |<div style="width: 300pt">说明  |
 | :----: | :----: | :----: |
@@ -175,7 +173,7 @@ errorMessage | code: 错误码，desc: 错误描述
 
 lite协议详细输出结果说明请参考：https://ai.chumenwenwen.com/pages/document/search-output-intro
 
-**返回示例：**
+**返回示例：**   
 ```
 {
     "clientAction":{
@@ -317,10 +315,10 @@ iopcmd=thumbnail&type=6&width=120&height=200",
     }
 }
 ```
-# 示例与说明
-## 单轮对话开发示例
+# 示例与说明   
+## 单轮对话开发示例   
 以onebox接口为例：<br>
-
+ 
 1.  脚本接收一个输入文件地址（可以是相对路径，也可以是绝对路径），文件内容是一些样例query，每一句query占一行；
 2.	脚本结果输出到当前执行目录的result文件里，也可以在执行脚本时手动执行 -o 参数，把结果输出到指定文件；
 3.  执行脚本前，请先自行修改appkey值和secret值；
@@ -377,7 +375,7 @@ if __name__ == '__main__':
     sys.exit(1)
   func(input, output)
 ```
-## 多轮对话开发示例
+## 多轮对话开发示例   
 系统默认多轮对话是开启的，DM会记录用户之前询问的历史信息，来判断对当前用户状态作出反应。DM中不会一直记录用户的状态信息，默认45秒后就会失效。如果想跳出多轮对话有三种方式：
 1.	等待45秒，DM中记录的用户历史信息自动失效；
 2.	通过url中添加ignore_context=true强制关闭多轮；
