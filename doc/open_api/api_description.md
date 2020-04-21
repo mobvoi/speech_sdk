@@ -1,4 +1,3 @@
-
 # ASR接口
 **URL:** api/asr/v1
 
@@ -9,7 +8,7 @@
 **调用参数及说明：**
 
 | <div style="width: 70pt">名称 | <div style="width: 75pt">类型 | <div style="width: 45pt">是否必传 | 说明|
-| :----: | :----: | :----: | :----|
+| :---- | :---- | :---- | :----|
 | file | wav/mp3/pcm | 是 | 要解析的音频文件,最大为512k |
 | Content-Type | String | 是 | 该请求头为音频的请求头类型见附表1.5格 |
 | type | String | 是 | 如果不方便设置Content-Type,可以设置此参数,会覆盖Content-Type的值 |
@@ -21,7 +20,7 @@
 **文件对应Content-Type说明：**
 
 | <div style="width:70pt">文件类型 | <div style="width:70pt">Rate |<div style="width: 300pt"> Content-Type 或者type|
-| :-----:| :----: |  :---------:   |
+| :----- | :---- | :--------- |
 | wav | 8000 | audio/x-wav;rate=8000 |
 | wav | 16000 | audio/x-wav;rate=16000 |
 | mp3 | 8000 | audio/x-mp3;rate=8000 |
@@ -41,7 +40,7 @@
 **响应说明：**
 
 | <div style="width: 150pt">名称 | <div style="width: 300pt">说明|
-| :---: | :---: |
+| :--- | :--- |
 | content | 解析出文字内容 |
 | message | 失败时的解释说明 |
 | status | 状态：success, error |
@@ -55,7 +54,7 @@
 **调用参数及说明：**
 
 | <div style="width: 56pt">字段名 | <div style="width: 50pt">类型 | <div style="width: 30pt">必填 | <div style="width: 40pt">默认值| <div style="width:  60pt">参考值 | 描述 |
-| :----: | :----: | :----: | :----: | :----: | :--: |
+| :---- | :---- | :---- | :---- | :---- | :-- |
 | text | String | 是 |  |  | 要合成的文本内容，限制为500字节。支持ssml标记语言，使用说明见附录3。|
 | appkey | String | 是 |  |  |开发者在AI开放平台上申请的appkey |
 | signature | String | 是 |  |  | 授权码，通过“appkey+secret+timestamp”进行md5加密，再用16进制进行编码。（加号参与字符串拼接）|
@@ -91,7 +90,7 @@
 **调用参数及说明：**
 
 | <div style="width: 70pt">名称 | <div style="width: 45pt">类型 | <div style="width: 55pt">是否必传 | 说明|
-| :----: | :----: | :----: | :----|
+| :---- | :---- | :---- | :----|
 | query | String | 是 | 查询语句 |
 | appkey | String | 是 | 开发者在AI开放平台上申请的appkey |
 | signature | String | 是 | 授权码，通过“appkey+secret+timestamp”进行md5加密，再用16进制进行编码。（加号参与字符串拼接） |
@@ -101,7 +100,7 @@
 **返回字段说明：**
 
 |<div style="width: 60pt">名称|<div style="width: 60pt">类型   |说明  |
-| :----: | :----: | :----: |
+| :---- | :---- | :---- |
 | traits | JsonObject | 特征意图 |
 | task | String | 技能分类，public.weather、public.restaurant、public.music等 |
 | norm_query | String | 归一化的query |
@@ -150,7 +149,7 @@
 **调用参数及说明：**
 
 | <div style="width: 55pt">名称 | <div style="width: 45pt">类型 | <div style="width: 55pt">是否必传 | 说明|
-| :----: | :----: | :----: | :----:|
+| :---- | :---- | :---- | :---- |
 | query | String | 是 | 查询语句 |
 | appkey | String | 是 | 开发者在AI开放平台上申请的appkey |
 | address | String | 是 | 用户地址（国家,省份,城市,区/镇,街道,街排号,纬度,经度），其中经纬度采用百度坐标系 |
@@ -166,7 +165,7 @@
 **返回字段说明：**
 
 |<div style="width: 70pt">名称     |<div style="width: 70pt">类型   |<div style="width: 300pt">说明  |
-| :----: | :----: | :----: |
+| :---- | :---- | :---- |
 | control | JsonObject | 多轮对话控制 |
 | clientAction | JsonObject | 前端执行逻辑 |
 | contextHint | JsonObject | 基于上下文的提示 |
