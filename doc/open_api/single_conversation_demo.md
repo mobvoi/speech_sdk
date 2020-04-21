@@ -1,11 +1,13 @@
 ## 单轮对话开发示例
-以onebox接口为例：<br>
+以onebox接口为例：
+
 
 1.  脚本接收一个输入文件地址（可以是相对路径，也可以是绝对路径），文件内容是一些样例query，每一句query占一行；
 2.	脚本结果输出到当前执行目录的result文件里，也可以在执行脚本时手动执行 -o 参数，把结果输出到指定文件；
 3.  执行脚本前，请先自行修改appkey值和secret值；
 4.	该脚本只在mac系统下测试过，使用python 2.7版本。
-```
+
+```python
 # coding=utf-8
 import argparse
 import hashlib
