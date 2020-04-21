@@ -475,13 +475,13 @@ domain="public.weather">
 
 
 **例1:** <br>
-**ssml标记前：** 今天天气不错，气温-12摄氏度适合穿长T恤
+**ssml标记前：** 今天天气不错，气温-12摄氏度适合穿长T恤<br>
 **ssml标记后：**
 <speak version="1.0" xml:lang="zh-CN" xmlns="http://www.w3.org/2001/10/synthesis" domain="public.weather">
     今天天气不错，气温<say-as interpret-as="value">-12</say-as>摄氏度<break strength="medium"/>适合穿<phoneme alphabet="ipa" ph="chang2">长</phoneme><w>T恤</w>
 </speak>
 
-**例2:**
+**例2:** <br>
 **ssml标记前：**
 9月10日，庆祝2019年教师节暨全国教育系统先进集体和先进个人表彰大会在京举行。
 习近平总书记在人民大会堂亲切会见受表彰代表，向受到表彰的先进集体和先进个人表示热烈祝贺，向全国广大教师和教育工作者致以节日的问候。
@@ -505,11 +505,11 @@ domain="public.weather">
 | 31006 | 服务器并发量超出限制 |
 
 ## 常见问题
- 1、Q：调用时发现某个通用场景NLU分类错误。
+ 1、Q：调用时发现某个通用场景NLU分类错误。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：请先检查是否在AI开放平台勾选了该通用场景并成功上线。
 
-   2、Q：address用户地址经纬度格式？
+   2、Q：address用户地址经纬度格式？<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：address格式为：（国家,省份,城市,区/镇,街道,街排号,纬度,经度），其中经纬度采用百度坐标系，如果经纬度存在，那么部分信息可缺省。如：北京市,北京市,,,,,39.91488908,116.40387397
 
-   3、Q：timestamp和signature的拼接问题。
+   3、Q：timestamp和signature的拼接问题。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：采用HTTP传参的方式，直接字符串拼接即可，可参考上面的示例。
