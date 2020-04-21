@@ -35,7 +35,7 @@
 
 **调用Demo及响应:**   
 
-```
+```json
  {
   "content": "我是出门问问",
   "status": "200"
@@ -78,7 +78,7 @@
 如果成功转换，则没有返回值，直接返回语音流。   
 如果转换失败，则返回json提示。  
 
-```
+```json
 {
   "status": "error",
   "errorMessage": {
@@ -116,7 +116,7 @@
 **返回示例：**
 
 
-```
+```json
 {
 	"status": "success",
 	"traits": {
@@ -186,7 +186,7 @@ lite协议详细输出结果说明请参考：https://ai.chumenwenwen.com/pages/
 
 **返回示例：** 
 
-```
+```json
 {
     "clientAction":{
 
@@ -338,7 +338,7 @@ iopcmd=thumbnail&type=6&width=120&height=200",
 3.  执行脚本前，请先自行修改appkey值和secret值；
 4.	该脚本只在mac系统下测试过，使用python 2.7版本。
 
-```
+```python
 # coding=utf-8
 import argparse
 import hashlib
@@ -402,7 +402,7 @@ if __name__ == '__main__':
 2.	脚本结果输出到当前执行目录的result文件里，也可以在执行脚本时手动执行 -o 参数，把结果输出到指定文件；
 3.	执行脚本前，请先自行修改appkey值和secret值；
 4.	该脚本只在mac系统下测试过，使用python 2.7版本。
-```
+```python
 # coding=utf-8
 import argparse
 import hashlib
@@ -453,6 +453,7 @@ if __name__ == '__main__':
     sys.exit(1)
   func(input, output)
 ```
+
 ## TTS ssml使用说明
 **ssml标志: <speak>**<br>
 所有ssml必须在<speak>标签之内，且需要注明version, xmlns和xml:lang。  
@@ -467,61 +468,9 @@ domain="public.weather">
 
 **标签定义说明**
 
-<table>
-    <tr>
-        <td><div style="width: 40pt">Key</td> 
-        <td><div style="width: 60pt">Function</td> 
-        <td>Tag</td> 
-   </tr>
-    <tr>
-        <td rowspan="5">say-as</td>    
-        <td >整数读法</td>  
-         <td ><say-as interpret-as=”value”>123</say-as></td>
-    </tr>
-    <tr>
-        <td >数字串读</td>  
-         <td ><say-as interpret-as=”digits”>123</say-as></td>
-    </tr>
-   <tr> 
-         <td >电话号码式读法</td>  
-         <td ><say-as interpret-as=”telephone”>13362734323</say-as></td>
-    </tr>
- <tr> 
-         <td >地址门牌读法</td>  
-         <td ><say-as interpret-as=”building”>233</say-as></td>
-    </tr>
- <tr> 
-         <td >节日读法</td>  
-         <td ><say-as interpret-as=”festival”>51</say-as></td>
-    </tr>
-<tr>
-        <td rowspan="5">break</td>    
-        <td >无停顿（default）</td>  
-         <td ><break strength="weak"/></td>
-    </tr>
-    <tr>
-        <td >逗号停顿</td>  
-         <td ><break strength="medium"/></td>
-    </tr>
-   <tr> 
-         <td >句子停顿</td>  
-         <td ><break strength="strong"/></td>
-    </tr>
- <tr> 
-         <td >段落停顿</td>  
-         <td ><break strength="x-strong”/></td>
-    </tr>
-    
-  <tr> 
-         <td >停顿x秒钟</td>  
-         <td ><break time="300ms"/></td>
-    </tr>
-    <tr> 
-         <td rowspan="1">w</td> 
-         <td >指定分词不拆分并可指定词发音</td>  
-         <td ><w>我的指甲<w phoneme=”zhang3 chang2”>长长</w>了</td>
-    </tr> 
-</table>
+![TTS_SSML](http://mobvoi-ai-public.ufile.ucloud.cn/img/TTS_SSML.PNG)
+
+
 
 **例1:** <br>
 **ssml标记前：** 今天天气不错，气温-12摄氏度适合穿长T恤  
@@ -543,13 +492,13 @@ domain="public.weather">
 ## 错误码说明
 
 | 错误码 | 备注 |
-| :----: | :----: |
+| :----: | :---- |
 | 10002 | 上传方式错误，需使用form表单方式 |
 | 10003 | 文件超出512K限制 |
 | 10004 | appkey、signature、timestamp参数不全 |
 | 10005 | 没找到上传的音频文件 |
 | 10006 | 鉴权失败（原因可能是appkey非法或者signature计算错误） |
-| 31000 | 参数错误，缺少必填参数或者参数取值范围错误，具体可参考errorMessage中描述 |
+| 31000 | 参数错误，缺少必填参数或者参数取值范围错误，具体可参考errorMessage中描述|
 | 31002 | 服务器内部错误 |
 | 31006 | 服务器并发量超出限制 |
 
