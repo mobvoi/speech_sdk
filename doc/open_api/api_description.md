@@ -1,6 +1,6 @@
 ## 简介
-出门问问目前提供了ASR、TTS、NLP、Search的HTTPS协议的接口。   
-外网域名：` https://open.mobvoi.com `   
+出门问问目前提供了ASR、TTS、NLP、Search的HTTPS协议的接口。
+外网域名：` https://open.mobvoi.com `
 
 # 调用方式
 ## ASR接口
@@ -20,9 +20,9 @@
 | appkey | String | 是 | 开发者在AI开放平台上申请的appkey |
 | signature | String | 是 | 授权码，通过“appkey+secret+timestamp”进行md5加密，再用16进制进行编码。（加号参与字符串拼接） |
 | timestamp | Long | 是 | 当前时间戳，单位为秒 |
-| user_id | String | 否 | 用户的唯一id,有则填写 |   
+| user_id | String | 否 | 用户的唯一id,有则填写 |
 
-**文件对应Content-Type说明：** 
+**文件对应Content-Type说明：**
 
 | <div style="width:70pt">文件类型 | <div style="width:70pt">Rate |<div style="width: 300pt"> Content-Type 或者type|
 | :-----:| :----: |  :---------:   |
@@ -31,9 +31,9 @@
 | mp3 | 8000 | audio/x-mp3;rate=8000 |
 | mp3 | 16000 | audio/x-mp3;rate=16000 |
 | pcm | 8000 | audio/x-wav;codec=pcm;rate=8000 |
-| pcm | 16000 | audio/x-wav;codec=pcm;rate=16000 |  
+| pcm | 16000 | audio/x-wav;codec=pcm;rate=16000 |
 
-**调用Demo及响应:**   
+**调用Demo及响应:**
 
 ```json
  {
@@ -42,7 +42,7 @@
 }
 ```
 
-**响应说明：**   
+**响应说明：**
 
 | <div style="width: 150pt">名称 | <div style="width: 300pt">说明|
 | :---: | :---: |
@@ -56,7 +56,7 @@
 
 **HTTP Method:** 支持GET/POST请求
 
-#### 调用参数及说明:   
+#### 调用参数及说明:
 
 | <div style="width: 56pt">字段名 | <div style="width: 50pt">类型 | <div style="width: 30pt">必填 | <div style="width: 40pt">默认值| <div style="width:  60pt">参考值 | 描述 |
 | :----: | :----: | :----: | :----: | :----: | :--: |
@@ -71,12 +71,12 @@
 | convert | String | 否 |  |  robot | 是否转化为机器声 |
 | rate | Enum | 否 | 16000 | 16000/8000  | 音频采样率 |
 | volume | Float | 否 | 0.5 | 0-1.0  | 合成音量 |
-| ignore_limit | Boolean | 否 | false | false/true  | 是否限制字数,如果设置true可以突破500字节限制 | 
+| ignore_limit | Boolean | 否 | false | false/true  | 是否限制字数,如果设置true可以突破500字节限制 |
 
-**返回值说明：**   
+**返回值说明：**
 
-如果成功转换，则没有返回值，直接返回语音流。   
-如果转换失败，则返回json提示。  
+如果成功转换，则没有返回值，直接返回语音流。
+如果转换失败，则返回json提示。
 
 ```json
 {
@@ -85,13 +85,14 @@
     "code": 31002,
     "desc": "failed to convert text to speech"
   }
+}
 ```
 
-## NLP接口   
-**URL:** api/nlp/v1   
-**HTTP Method:** GET   
+## NLP接口
+**URL:** api/nlp/v1
+**HTTP Method:** GET
 
-**调用参数及说明：**    
+**调用参数及说明：**
 
 | <div style="width: 70pt">名称 | <div style="width: 45pt">类型 | <div style="width: 55pt">是否必传 | 说明|
 | :----: | :----: | :----: | :----|
@@ -101,17 +102,17 @@
 | timestamp | Long | 是 | 当前时间戳，单位为秒 |
 | context | String | 否 | 强制指定domain |
 
-**返回字段说明：**   
+**返回字段说明：**
 
 |<div style="width: 60pt">名称|<div style="width: 60pt">类型   |说明  |
 | :----: | :----: | :----: |
-| traits | JsonObject | 特征意图 | 
+| traits | JsonObject | 特征意图 |
 | task | String | 技能分类，public.weather、public.restaurant、public.music等 |
-| norm_query | String | 归一化的query | 
-| query | String | 原始query | 
+| norm_query | String | 归一化的query |
+| query | String | 原始query |
 | params | JsonObejct | 参数列表，time、location、ranking_condition、price、type等 |
-| status | String | 状态：success, error | 
-| errorMessage | JsonObejct | code: 错误码，desc: 错误描述 | 
+| status | String | 状态：success, error |
+| errorMessage | JsonObejct | code: 错误码，desc: 错误描述 |
 
 **返回示例：**
 
@@ -146,7 +147,7 @@
 	}
 }
 ```
-## Search接口   
+## Search接口
 **URL:** api/search/v1<br>
 **HTTP Method:** GET<br>
 
@@ -166,25 +167,25 @@
 | ignore_context | Bool | 否 | 是否忽略多轮会话，默认为false |
 | user_id | String | 否 | 用户ID，可根据需求由开发者生成 |
 
-**返回字段说明：**  
+**返回字段说明：**
 
 |<div style="width: 70pt">名称     |<div style="width: 70pt">类型   |<div style="width: 300pt">说明  |
 | :----: | :----: | :----: |
-| control | JsonObject | 多轮对话控制 | 
+| control | JsonObject | 多轮对话控制 |
 | clientAction | JsonObject | 前端执行逻辑 |
-| contextHint | JsonObject | 基于上下文的提示 | 
-| status| String | 服务状态 | 
+| contextHint | JsonObject | 基于上下文的提示 |
+| status| String | 服务状态 |
 | query | String | 用户原始query |
-| domain | String | 垂直搜索分类 |  
-| states| JsonObejct | semantic slots信息 | 
+| domain | String | 垂直搜索分类 |
+| states| JsonObejct | semantic slots信息 |
 | queryTime | JsonObejct | query执行的时间 |
 | messageId | String | query执行时的ID，同一个ID可能包含多个query |
-| languageOutput | JsonObejct | 语言输出结果 | 
-| clientData | JsonObejct | 垂直搜索查询结果 | 
+| languageOutput | JsonObejct | 语言输出结果 |
+| clientData | JsonObejct | 垂直搜索查询结果 |
 
 lite协议详细输出结果说明请参考：https://ai.chumenwenwen.com/pages/document/search-output-intro
 
-**返回示例：** 
+**返回示例：**
 
 ```json
 {
@@ -232,9 +233,9 @@ lite协议详细输出结果说明请参考：https://ai.chumenwenwen.com/pages/
     "queryTime":1548657613427,
     "messageId":"e8ad4981-2998-4c3e-9e75-5db8db5be995",
     "languageOutput":{
-        "tts":"<speak version="1.0" xml:lang="zh-cn" 
-xmlns="http://www.w3.org/2001/10/synthesis"><tts::prompt 
-domain="public.baike"/>为你查到以下关于刘德华的资料</speak>",
+        "tts":"<speak version=\"1.0\" xml:lang=\"zh-cn\"
+xmlns=\"http://www.w3.org/2001/10/synthesis\"><tts::prompt
+domain=\"public.baike\"/>为你查到以下关于刘德华的资料</speak>",
         "displayText":"为你查到以下关于刘德华的资料"
     },
     "intent":"other",
@@ -328,11 +329,11 @@ iopcmd=thumbnail&type=6&width=120&height=200",
 }
 ```
 
-# 示例与说明   
-## 单轮对话开发示例   
+# 示例与说明
+## 单轮对话开发示例
 以onebox接口为例：
 
- 
+
 1.  脚本接收一个输入文件地址（可以是相对路径，也可以是绝对路径），文件内容是一些样例query，每一句query占一行；
 2.	脚本结果输出到当前执行目录的result文件里，也可以在执行脚本时手动执行 -o 参数，把结果输出到指定文件；
 3.  执行脚本前，请先自行修改appkey值和secret值；
@@ -390,7 +391,7 @@ if __name__ == '__main__':
     sys.exit(1)
   func(input, output)
 ```
-## 多轮对话开发示例   
+## 多轮对话开发示例
 系统默认多轮对话是开启的，DM会记录用户之前询问的历史信息，来判断对当前用户状态作出反应。DM中不会一直记录用户的状态信息，默认45秒后就会失效。如果想跳出多轮对话有三种方式：
 1.	等待45秒，DM中记录的用户历史信息自动失效；
 2.	通过url中添加ignore_context=true强制关闭多轮；
@@ -402,6 +403,7 @@ if __name__ == '__main__':
 2.	脚本结果输出到当前执行目录的result文件里，也可以在执行脚本时手动执行 -o 参数，把结果输出到指定文件；
 3.	执行脚本前，请先自行修改appkey值和secret值；
 4.	该脚本只在mac系统下测试过，使用python 2.7版本。
+
 ```python
 # coding=utf-8
 import argparse
@@ -456,15 +458,15 @@ if __name__ == '__main__':
 
 ## TTS ssml使用说明
 **ssml标志: <speak>**<br>
-所有ssml必须在<speak>标签之内，且需要注明version, xmlns和xml:lang。  
+所有ssml必须在<speak>标签之内，且需要注明version, xmlns和xml:lang。
 其中version和xmlns分别固定为version="1.0"和 xmlns="http://www.w3.org/2001/10/synthesis"，<br>
 xml:lang="zh-CN"(默认中文)或"en-US"(默认英文)<br>
 
 以domain="public.weather"为例：<br>
-<speak version="1.0" <br>  xml:lang="zh-CN"   <br> xmlns="http://www.w3.org/2001/10/synthesis" <br> 
+<speak version="1.0" <br>  xml:lang="zh-CN"   <br> xmlns="http://www.w3.org/2001/10/synthesis" <br>
 domain="public.weather">
-    今天天气不错  
-</speak>  
+    今天天气不错
+</speak>
 
 **标签定义说明**
 
@@ -473,20 +475,20 @@ domain="public.weather">
 
 
 **例1:** <br>
-**ssml标记前：** 今天天气不错，气温-12摄氏度适合穿长T恤  
-**ssml标记后：**  
+**ssml标记前：** 今天天气不错，气温-12摄氏度适合穿长T恤
+**ssml标记后：**
 <speak version="1.0" xml:lang="zh-CN" xmlns="http://www.w3.org/2001/10/synthesis" domain="public.weather">
-    今天天气不错，气温<say-as interpret-as="value">-12</say-as>摄氏度<break strength="medium"/>适合穿<phoneme alphabet="ipa" ph="chang2">长</phoneme><w>T恤</w>  
+    今天天气不错，气温<say-as interpret-as="value">-12</say-as>摄氏度<break strength="medium"/>适合穿<phoneme alphabet="ipa" ph="chang2">长</phoneme><w>T恤</w>
 </speak>
 
-**例2:**  
-**ssml标记前：**  
-9月10日，庆祝2019年教师节暨全国教育系统先进集体和先进个人表彰大会在京举行。  
-习近平总书记在人民大会堂亲切会见受表彰代表，向受到表彰的先进集体和先进个人表示热烈祝贺，向全国广大教师和教育工作者致以节日的问候。  
+**例2:**
+**ssml标记前：**
+9月10日，庆祝2019年教师节暨全国教育系统先进集体和先进个人表彰大会在京举行。
+习近平总书记在人民大会堂亲切会见受表彰代表，向受到表彰的先进集体和先进个人表示热烈祝贺，向全国广大教师和教育工作者致以节日的问候。
 
-**ssml标记后：**  
+**ssml标记后：**
 <speak version="1.0" xml:lang="zh-CN"   <br> xmlns="http://www.w3.org/2001/10/synthesis" domain="public.news"> <br>
-    9月10日，庆祝2019年教师节暨全国教育系统先进集体和先进个人表彰大会在京举行。<break time=”500ms”/>习近平总书记在人民大会堂亲切会见受表彰代表，<break time=”500ms”/>向受到表彰的先进集体和先进个人表示热烈祝贺，<break time=”500ms”/>向全国广大教师和教育工作者致以节日的问候。  
+    9月10日，庆祝2019年教师节暨全国教育系统先进集体和先进个人表彰大会在京举行。<break time=”500ms”/>习近平总书记在人民大会堂亲切会见受表彰代表，<break time=”500ms”/>向受到表彰的先进集体和先进个人表示热烈祝贺，<break time=”500ms”/>向全国广大教师和教育工作者致以节日的问候。
 </speak>
 
 ## 错误码说明
@@ -503,11 +505,11 @@ domain="public.weather">
 | 31006 | 服务器并发量超出限制 |
 
 ## 常见问题
- 1、Q：调用时发现某个通用场景NLU分类错误。  
+ 1、Q：调用时发现某个通用场景NLU分类错误。
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：请先检查是否在AI开放平台勾选了该通用场景并成功上线。
 
-   2、Q：address用户地址经纬度格式？  
+   2、Q：address用户地址经纬度格式？
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：address格式为：（国家,省份,城市,区/镇,街道,街排号,纬度,经度），其中经纬度采用百度坐标系，如果经纬度存在，那么部分信息可缺省。如：北京市,北京市,,,,,39.91488908,116.40387397
 
-   3、Q：timestamp和signature的拼接问题。  
+   3、Q：timestamp和signature的拼接问题。
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：采用HTTP传参的方式，直接字符串拼接即可，可参考上面的示例。
