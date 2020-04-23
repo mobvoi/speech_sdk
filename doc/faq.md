@@ -2,7 +2,6 @@
 * [SDK支持什么平台架构？](#sdk%E6%94%AF%E6%8C%81%E4%BB%80%E4%B9%88%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84)
 * [SDK对输入音频格式有要求吗？](#sdk%E5%AF%B9%E8%BE%93%E5%85%A5%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F%E6%9C%89%E8%A6%81%E6%B1%82%E5%90%97)
 * [有没有类似hello,world的demo？](#%E6%9C%89%E6%B2%A1%E6%9C%89%E7%B1%BB%E4%BC%BChelloworld%E7%9A%84demo)
-* [有没有开发者论坛啊？](#%E6%9C%89%E6%B2%A1%E6%9C%89%E5%BC%80%E5%8F%91%E8%80%85%E8%AE%BA%E5%9D%9B%E5%95%8A)
 
 
 [***功能相关***](#%E5%8A%9F%E8%83%BD%E7%9B%B8%E5%85%B3)
@@ -10,14 +9,11 @@
 * [唤醒热词如何更改？](#%E5%94%A4%E9%86%92%E7%83%AD%E8%AF%8D%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9)
 * [关键词识别和热词唤醒一样吗？](#%E5%85%B3%E9%94%AE%E8%AF%8D%E8%AF%86%E5%88%AB%E5%92%8C%E7%83%AD%E8%AF%8D%E5%94%A4%E9%86%92%E4%B8%80%E6%A0%B7%E5%90%97)
 * [支持中英文混合识别吗？](#%E6%94%AF%E6%8C%81%E4%B8%AD%E8%8B%B1%E6%96%87%E6%B7%B7%E5%90%88%E8%AF%86%E5%88%AB%E5%90%97)
-* [Linux:如何屏蔽SDK本身日志输出？](#linux%E5%A6%82%E4%BD%95%E5%B1%8F%E8%94%BDsdk%E6%9C%AC%E8%BA%AB%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA)
+* [Linux:可否屏蔽SDK本身日志输出？](#linux%E5%A6%82%E4%BD%95%E5%B1%8F%E8%94%BDsdk%E6%9C%AC%E8%BA%AB%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA)
 * [离线设置联系人数量有限制吗？](#%E7%A6%BB%E7%BA%BF%E8%AE%BE%E7%BD%AE%E8%81%94%E7%B3%BB%E4%BA%BA%E6%95%B0%E9%87%8F%E6%9C%89%E9%99%90%E5%88%B6%E5%90%97)
 * [TTS的长度有限制吗？](#tts%E7%9A%84%E9%95%BF%E5%BA%A6%E6%9C%89%E9%99%90%E5%88%B6%E5%90%97)
-* [TTS能切换人声吗？](#tts%E8%83%BD%E5%88%87%E6%8D%A2%E4%BA%BA%E5%A3%B0%E5%90%97)
-* [TTS能够读出除了中文之外的语言吗？](#tts%E8%83%BD%E5%A4%9F%E8%AF%BB%E5%87%BA%E9%99%A4%E4%BA%86%E4%B8%AD%E6%96%87%E4%B9%8B%E5%A4%96%E7%9A%84%E8%AF%AD%E8%A8%80%E5%90%97)
 * [ASR的最长识别时间是多久？](#asr%E7%9A%84%E6%9C%80%E9%95%BF%E8%AF%86%E5%88%AB%E6%97%B6%E9%97%B4%E6%98%AF%E5%A4%9A%E4%B9%85)
 * [语音识别返回JSON字符串，能直接返回对应语音的文本吗？](#%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E8%BF%94%E5%9B%9Ejson%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%83%BD%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E%E5%AF%B9%E5%BA%94%E8%AF%AD%E9%9F%B3%E7%9A%84%E6%96%87%E6%9C%AC%E5%90%97)
-* [AI中的垂直搜索一定要开启语音识别，不能直接用文本吗？](#ai%E4%B8%AD%E7%9A%84%E5%9E%82%E7%9B%B4%E6%90%9C%E7%B4%A2%E4%B8%80%E5%AE%9A%E8%A6%81%E5%BC%80%E5%90%AF%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E7%94%A8%E6%96%87%E6%9C%AC%E5%90%97)
 
 
 [***技术疑难***](#%E6%8A%80%E6%9C%AF%E7%96%91%E9%9A%BE)
@@ -26,24 +22,19 @@
 * [Linux:离线TTS占用内存过大？](#linux%E7%A6%BB%E7%BA%BFtts%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E8%BF%87%E5%A4%A7)
 
 [***更多的问题***](#%E6%9B%B4%E5%A4%9A%E7%9A%84%E9%97%AE%E9%A2%98)
-* [问问AI开放平台](#%E9%97%AE%E9%97%AEai%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0)
 * [问问开发者邮箱](#%E9%97%AE%E9%97%AE%E5%BC%80%E5%8F%91%E8%80%85%E9%82%AE%E7%AE%B1)
 
 ### 常见问题
 
 #### SDK支持什么平台架构？
 
-> Android版SDK支持x86_64，mips，armv7，armv8平台。 Linux版SDK目前支持x86_64，armv7，armv8平台。
+> Android版SDK支持x86_64，armv7，armv8平台。 Linux版SDK目前支持x86_64，armv7，armv8平台。
 
 #### SDK对输入音频格式有要求吗？
 > Android和Linux SDK音频均支持16k采样，16bit位深，小端(Little-Endian)，pcm格式。
 
 #### 有没有类似hello,world的demo？
 > 请参考官网开发者文档：[Android版开发示例](http://ai.chumenwenwen.com/pages/document/android/example)，[Linux版开发示例](http://ai.chumenwenwen.com/pages/document/linux/example)。
-
-#### 有没有开发者论坛啊？
-> 有的。请参考[问问AI开放平台](#%E9%97%AE%E9%97%AEai%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0)
-
 
 ### 功能相关
 
@@ -56,14 +47,13 @@
 动态生成方法可参考Android版SDK代码示例热词部分。
 
 #### 关键词识别和热词唤醒一样吗？
-> 首先问题中的关键词识别，我们也可以理解为快词，在Android和Linux版的SDK中是针对离线recognizer的设置，在recognizer不关闭的情况下，快词可以一直被识别，而热词是用于更广义的唤醒。
-另外二者在性能上是有差距的，请参考[唤醒热词如何更改？](#%E5%94%A4%E9%86%92%E7%83%AD%E8%AF%8D%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9)。
+> 首先问题中的关键词识别，我们也可以理解为快词，在Android和Linux版的SDK中是针对离线recognizer的设置，在recognizer不关闭的情况下，快词可以一直被识别，而热词是用于更广义的唤醒。另外二者在性能上是有差距的。
 
 #### 支持中英文混合识别吗？
 > 支持。
 
-#### Linux:如何屏蔽SDK本身日志输出？
-> Linux版SDK暂不支持。如确实需要，可使用grep或其他命令屏蔽大部分输出。
+#### Linux:可否屏蔽SDK本身日志输出？
+> 支持。如确实需要，可使用grep或其他命令屏蔽大部分输出。
 
 #### 离线设置联系人数量有限制吗？
 > 受限于机器内存大小限制。但如果设置数量过多，可能会影响性能。
@@ -71,21 +61,9 @@
 #### TTS的长度有限制吗？
 > 中文单次输入最长500字。
 
-#### TTS能切换人声吗？
-> 暂不支持切换人声。
-
-#### TTS能够读出除了中文之外的语言吗？
-> 目前能支持中文，英文和中英文混合，中文效果最好。
-
-#### ASR的最长识别时间是多久？
-> 目前在线识别是12秒超时，但使用Voice Input方式的话可以延长至30秒。
-
 #### 语音识别返回JSON字符串，能直接返回对应语音的文本吗？
 > JSON字符串中的"query"字段对应值即为识别的语音文本，如果想直接返回语音文本，可调用asr类型的recognizer，具体请参考官网文档:  
 > [Andriod版](http://ai.chumenwenwen.com/pages/document/android/example) [Linux版](http://ai.chumenwenwen.com/pages/document/linux/example)。
-
-#### AI中的垂直搜索一定要开启语音识别，不能直接用文本吗？
-> Android版SDK已提供相应API，请在[在线API文档](http://ai.chumenwenwen.com/pages/java-doc/)中搜索*startTextSearch*。Linux版SDK目前不支持。
 
 #### 返回场景中的action是什么意思，如何定义？
 > action就是前端执行的唯一标识。比如问天气就是com.mobvoi.semantic.action.WEATHER，查股票就是com.mobvoi.semantic.action.STOCK。前端请按照这个字段来规划执行逻辑。
@@ -102,9 +80,6 @@
 > 离线TTS会加载相关模型，所以占用内存较多，如果对内存使用有限制，可以切换为在线TTS。
 
 ### 更多的问题
-
-#### 问问AI开放平台
->想看到更多的问题，请点击[出门问问开发者论坛](https://bbs.chumenwenwen.com/forum.php?mod=forumdisplay&fid=279)。
 
 #### 问问开发者邮箱
 >请将问题发至[ai-developer@mobvoi.com](mailto://ai-developer@mobvoi.com)
