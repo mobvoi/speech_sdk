@@ -53,7 +53,7 @@
 
 **调用参数及说明：**
 
-| <div style="width: 56pt">字段名 | <div style="width: 50pt">类型 | <div style="width: 30pt">必填 | <div style="width: 40pt">默认值| <div style="width:  60pt">参考值 | 描述 |
+| <div style="width: 56pt">字段名 | <div style="width: 50pt">类型 | <div style="width: 20pt">必填 | <div style="width: 40pt">默认值| <div style="width:  40pt">参考值 | 描述 |
 | :---- | :---- | :---- | :---- | :---- | :-- |
 | text | String | 是 |  |  | 要合成的文本内容，限制为500字节。支持ssml标记语言，使用说明见附录3。|
 | appkey | String | 是 |  |  |开发者在AI开放平台上申请的appkey |
@@ -61,7 +61,7 @@
 | timestamp | Long | 是 |  |  |当前时间戳，单位为秒 |
 | net_type | String | 否 | wifi | wifi/2g/3g  |网络类型,可能在服务器决定合成音频采样率和压缩算法 |
 | platform | Enum | 否 | pc | android/ios/pc  |使用的平台，android,ios,pc三种类型，每种类型对应一个编码 |
-| speaker | String | 否 | cissy_meet | cissy_meet/emily_meet/billy_meet/lucy_meet/tina_meet/dora_meet/angela_meet  |中文女声(成熟)/中文女声(温柔)/中文男声/中文童声/台湾女声/粤语女声/英语女声 |
+| speaker | String | 否 | cissy_meet | cissy_meet<br>emily_meet<br/>billy_meet<br/>lucy_meet<br>/tina_meet<br/>dora_meet<br/>angela_meet |中文女声(成熟)<br/>中文女声(温柔)<br/>中文男声<br/>中文童声<br/>台湾女声<br/>粤语女声<br/>英语女声 |
 | speed | Float | 否 | 1.15 | 0.5-2.0  |合成的语速 |
 | convert | String | 否 |  |  robot | 是否转化为机器声 |
 | rate | Enum | 否 | 16000 | 16000/8000  | 音频采样率 |
