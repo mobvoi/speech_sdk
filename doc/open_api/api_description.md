@@ -61,7 +61,7 @@
 | timestamp | Long | 是 |  |  |当前时间戳，单位为秒 |
 | net_type | String | 否 | wifi | wifi/2g/3g  |网络类型,可能在服务器决定合成音频采样率和压缩算法 |
 | platform | Enum | 否 | pc | android/ios/pc  |使用的平台，android,ios,pc三种类型，每种类型对应一个编码 |
-| speaker | String | 否 | cissy | cissy/emily/billy/lucy/tina/dora/angela  |中文女声(成熟)/中文女声(温柔)/中文男声/中文童声/台湾女声/粤语女声/英语女声 |
+| speaker | String | 否 | cissy_meet | cissy_meet/emily_meet/billy_meet/lucy_meet/tina_meet/dora_meet/angela_meet  |中文女声(成熟)/中文女声(温柔)/中文男声/中文童声/台湾女声/粤语女声/英语女声 |
 | speed | Float | 否 | 1.15 | 0.5-2.0  |合成的语速 |
 | convert | String | 否 |  |  robot | 是否转化为机器声 |
 | rate | Enum | 否 | 16000 | 16000/8000  | 音频采样率 |
